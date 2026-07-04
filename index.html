@@ -42,9 +42,9 @@
       position: sticky;
       top: 0;
       z-index: 100;
-      background: rgba(26,58,42,0.97);
+      background: rgba(244,245,242,0.97);
       backdrop-filter: blur(8px);
-      border-bottom: 1px solid rgba(255,255,255,0.08);
+      border-bottom: 1px solid var(--border);
     }
     .nav-inner {
       display: flex;
@@ -52,10 +52,10 @@
       justify-content: space-between;
       height: 66px;
     }
-    .nav-logo img { height: 36px; width: auto; }
-    .hero-logo { display: block; height: 72px; width: auto; margin-bottom: 28px; }
+    .nav-logo img { height: 40px; width: auto; }
+    .hero-logo { display: block; height: 150px; width: auto; margin-bottom: 20px; }
     @media (max-width: 600px) {
-      .hero-logo { height: 52px; margin-bottom: 20px; }
+      .hero-logo { height: 90px; margin-bottom: 12px; }
     }
     .nav-links {
       display: flex;
@@ -66,11 +66,11 @@
     .nav-links a {
       font-size: 12px;
       font-weight: 600;
-      color: rgba(255,255,255,0.7);
+      color: var(--ink-mid);
       letter-spacing: 0.04em;
       transition: color 0.15s;
     }
-    .nav-links a:hover { color: white; }
+    .nav-links a:hover { color: var(--forest); }
     .nav-cta {
       background: var(--sunrise) !important;
       color: white !important;
@@ -123,7 +123,7 @@
       margin-bottom: 20px;
     }
     .hero h1 {
-      font-size: clamp(44px, 6vw, 76px);
+      font-size: clamp(32px, 4.2vw, 54px);
       font-weight: 900;
       color: var(--forest);
       line-height: 1.02;

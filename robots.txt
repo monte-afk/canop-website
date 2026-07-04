@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://canop.com.au/sitemap.xml

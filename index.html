@@ -53,6 +53,10 @@
       height: 66px;
     }
     .nav-logo img { height: 36px; width: auto; }
+    .hero-logo { display: block; height: 72px; width: auto; margin-bottom: 28px; }
+    @media (max-width: 600px) {
+      .hero-logo { height: 52px; margin-bottom: 20px; }
+    }
     .nav-links {
       display: flex;
       align-items: center;
@@ -83,7 +87,7 @@
 
     /* ── Hero ── */
     .hero {
-      background: var(--forest);
+      background: var(--stone);
       padding: 100px 0 88px;
       position: relative;
       overflow: hidden;
@@ -115,13 +119,13 @@
       font-weight: 700;
       letter-spacing: 0.12em;
       text-transform: uppercase;
-      color: var(--eucalyptus);
+      color: var(--forest);
       margin-bottom: 20px;
     }
     .hero h1 {
       font-size: clamp(44px, 6vw, 76px);
       font-weight: 900;
-      color: white;
+      color: var(--forest);
       line-height: 1.02;
       letter-spacing: -1.5px;
       margin-bottom: 24px;
@@ -132,7 +136,7 @@
     }
     .hero-body {
       font-size: 17px;
-      color: rgba(255,255,255,0.6);
+      color: var(--ink-mid);
       line-height: 1.65;
       max-width: 480px;
       margin-bottom: 40px;
@@ -162,7 +166,7 @@
       align-items: center;
       gap: 8px;
       background: transparent;
-      color: white;
+      color: var(--forest);
       font-family: 'Montserrat', sans-serif;
       font-size: 13px;
       font-weight: 600;
@@ -170,11 +174,11 @@
       text-transform: uppercase;
       padding: 14px 24px;
       border-radius: 6px;
-      border: 1.5px solid rgba(255,255,255,0.2);
+      border: 1.5px solid var(--border);
       cursor: pointer;
       transition: border-color 0.15s;
     }
-    .btn-ghost:hover { border-color: rgba(255,255,255,0.5); }
+    .btn-ghost:hover { border-color: var(--forest); }
 
     /* ── Trust bar ── */
     .trust-bar {
@@ -736,6 +740,7 @@
 <section class="hero">
   <div class="container">
     <div class="hero-inner">
+      <img src="images/canop_logo.png" alt="cano.p" class="hero-logo" />
       <span class="hero-eyebrow">Temporary housing · Sydney</span>
       <h1>Leave it<br>to <em>us.</em></h1>
       <p class="hero-body">

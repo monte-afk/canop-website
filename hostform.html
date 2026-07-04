@@ -3,20 +3,20 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Register your property — cano.p</title>
-<meta name="description" content="Join Sydney's dedicated temporary housing host network. Register your property with cano.p — longer stays, reliable payment, no lock-in." />
+<title>Done being on call 24/7? — cano.p</title>
+<meta name="description" content="For hands-on Airbnb hosts running it solo. One guest for months instead of constant turnover — less cleaning, less midnight messages, one relationship instead of an algorithm." />
 <link rel="canonical" href="https://canop.com.au/hostform.html" />
 <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32.png" />
 <link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16.png" />
 <link rel="apple-touch-icon" href="images/favicon-180.png" />
 <meta property="og:type" content="website" />
-<meta property="og:title" content="Register your property — cano.p" />
-<meta property="og:description" content="Join Sydney's dedicated temporary housing host network — longer stays, reliable payment, no lock-in." />
+<meta property="og:title" content="Done being on call 24/7? — cano.p" />
+<meta property="og:description" content="For hands-on Airbnb hosts running it solo. One guest for months instead of constant turnover." />
 <meta property="og:url" content="https://canop.com.au/hostform.html" />
 <meta property="og:image" content="https://canop.com.au/images/canop_logo.png" />
 <meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:title" content="Register your property — cano.p" />
-<meta name="twitter:description" content="Join Sydney's dedicated temporary housing host network — longer stays, reliable payment, no lock-in." />
+<meta name="twitter:title" content="Done being on call 24/7? — cano.p" />
+<meta name="twitter:description" content="For hands-on Airbnb hosts running it solo. One guest for months instead of constant turnover." />
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
 <style>
   :root {
@@ -68,6 +68,7 @@
   .field label { display: block; font-size: 13px; font-weight: 600; color: var(--ink); margin-bottom: 6px; }
   .req { color: var(--sunrise); margin-left: 3px; }
   .opt { font-size: 11.5px; font-weight: 500; color: var(--ink-soft); text-transform: none; letter-spacing: 0; margin-left: 5px; }
+  .hint { font-size: 12px; color: var(--ink-soft); margin-top: 4px; }
   input[type="text"], input[type="tel"], input[type="email"], input[type="date"], input[type="url"], select {
     width: 100%; font-family: inherit; font-size: 14.5px; color: var(--ink);
     padding: 12px 14px; border: 1.5px solid var(--border); border-radius: var(--radius); background: white; transition: border-color 0.15s;
@@ -126,15 +127,21 @@
 
   <div class="brief-hero">
     <img src="images/canop_logo.png" alt="cano.p" class="brief-logo" />
-    <span class="hero-eyebrow">For property hosts</span>
-    <h1>Register your property.</h1>
-    <p>Join Sydney's dedicated temporary housing host network. Longer stays, reliable payment, no lock-in — your listing, your terms.</p>
+    <span class="hero-eyebrow">For hands-on hosts</span>
+    <h1>Done being on call 24/7?</h1>
+    <p>The midnight message about a lost key. A guest threatening a bad review over something that wasn't your fault. Cleaning between every single stay. If you're running this yourself — no team, no management company — I've been there, and got burnt out too. This is for hosts like us specifically.</p>
     <div class="hero-promise">
-      <div class="promise-item"><div class="promise-dot"></div>Longer stays</div>
-      <div class="promise-item"><div class="promise-dot"></div>Reliable, insurer-backed payment</div>
-      <div class="promise-item"><div class="promise-dot"></div>Less guest turnover</div>
-      <div class="promise-item"><div class="promise-dot"></div>Fee only on confirmed bookings</div>
+      <div class="promise-item"><div class="promise-dot"></div>One guest, for months</div>
+      <div class="promise-item"><div class="promise-dot"></div>Far less turnover and cleaning</div>
+      <div class="promise-item"><div class="promise-dot"></div>One relationship, not an algorithm</div>
     </div>
+  </div>
+
+  <div style="background:white;border:1px solid var(--border);border-radius:var(--radius-lg);padding:20px 24px;margin-bottom:24px;">
+    <div style="font-size:13px;font-weight:700;color:var(--forest);text-transform:uppercase;letter-spacing:0.05em;margin-bottom:8px;">How the fee works</div>
+    <p style="font-size:14.5px;color:var(--ink-mid);line-height:1.6;margin:0;">
+      No cost to register or list. We take 10% of the total booking value, and only on placements that actually go ahead — no booking, no fee. For comparison, that's less than Airbnb's ~15.5% host fee. Adjusters and insurers pay nothing on their end, so the rate you quote is the rate you're working with.
+    </p>
   </div>
 
   <form id="hostForm" action="https://formspree.io/f/mzdlyjdl" method="POST">
@@ -225,25 +232,76 @@
     return `
       <div class="property-block">
         <div class="property-block-title">Property ${index}</div>
-        <div class="field">
-          <label for="url-${index}">Listing URL (Airbnb, Stayz or Booking.com)<span class="req">*</span></label>
-          <input type="url" id="url-${index}" name="property_${index}_url" placeholder="https://airbnb.com.au/rooms/..." required />
+
+        <div class="field" style="margin-bottom:14px;">
+          <div style="font-size:13px;color:var(--ink-mid);background:var(--sunrise-lt);border-radius:var(--radius);padding:12px 14px;line-height:1.5;">
+            💡 Got a listing? Properties with a link go live faster — photos and reviews already do the work of convincing a guest, and we can feature it directly on the cano.p site.
+          </div>
         </div>
+
+        <div class="field" style="display:flex;align-items:center;gap:8px;margin-bottom:14px;">
+          <input type="checkbox" id="has-url-${index}" onchange="toggleListingUrl(${index})" style="width:16px;height:16px;accent-color:var(--forest);" />
+          <label for="has-url-${index}" style="margin-bottom:0;font-weight:600;">I have a link to my existing listing (Airbnb, Stayz, Booking.com)</label>
+        </div>
+
+        <div class="field" id="url-wrap-${index}" style="display:none;">
+          <label for="url-${index}">Listing URL</label>
+          <input type="url" id="url-${index}" name="property_${index}_url" placeholder="https://airbnb.com.au/rooms/..." />
+        </div>
+
         <div class="field-row">
           <div class="field">
-            <label for="rate-${index}">Weekly rate range<span class="req">*</span></label>
-            <select id="rate-${index}" name="property_${index}_rate" required>
+            <label for="suburb-${index}">Suburb<span class="req">*</span></label>
+            <input type="text" id="suburb-${index}" name="property_${index}_suburb" placeholder="e.g. Parramatta" required />
+          </div>
+          <div class="field">
+            <label for="bedrooms-${index}">Bedrooms<span class="req">*</span></label>
+            <select id="bedrooms-${index}" name="property_${index}_bedrooms" required>
+              <option value="">Select one...</option>
+              <option>Studio</option>
+              <option>1</option>
+              <option>2</option>
+              <option>3</option>
+              <option>4+</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="field-row">
+          <div class="field">
+            <label for="sleeps-${index}">Sleeps (max guests)<span class="req">*</span></label>
+            <input type="number" id="sleeps-${index}" name="property_${index}_sleeps" min="1" placeholder="e.g. 6" required />
+          </div>
+          <div class="field">
+            <label for="rate-${index}">Weekly rate range<span class="opt">optional \u2014 you'll quote per brief</span></label>
+            <select id="rate-${index}" name="property_${index}_rate">
               <option value="">Select one...</option>
               ${rateOptionsHtml}
             </select>
           </div>
-          <div class="field">
-            <label for="avail-${index}">Available from<span class="req">*</span></label>
-            <input type="date" id="avail-${index}" name="property_${index}_available" required />
-          </div>
+        </div>
+
+        <div class="field">
+          <label for="ical-${index}">Calendar link (Airbnb/Stayz iCal URL)<span class="opt">optional</span></label>
+          <input type="url" id="ical-${index}" name="property_${index}_ical" placeholder="https://www.airbnb.com.au/calendar/ical/..." />
+          <div class="hint">Add this and we'll only reach out for dates you're actually free — no more bids on briefs you'd have to turn down.</div>
         </div>
       </div>
     `;
+  }
+
+  function toggleListingUrl(index) {
+    const checkbox = document.getElementById(`has-url-${index}`);
+    const wrap = document.getElementById(`url-wrap-${index}`);
+    const urlInput = document.getElementById(`url-${index}`);
+    if (checkbox.checked) {
+      wrap.style.display = 'block';
+      urlInput.required = true;
+    } else {
+      wrap.style.display = 'none';
+      urlInput.required = false;
+      urlInput.value = '';
+    }
   }
 
   function selectCount(el, count) {

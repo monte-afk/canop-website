@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Register your property — cano.p</title>
+<meta name="description" content="Join Sydney's dedicated temporary housing host network. Register your property with cano.p — longer stays, reliable payment, no lock-in." />
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --forest:      #1A3A2A;
+    --forest-dark: #0D2018;
+    --eucalyptus:  #7FA99B;
+    --sunrise:     #E8821A;
+    --sunrise-lt:  #FDF0E4;
+    --stone:       #F4F5F2;
+    --border:      #E2E0DA;
+    --ink:         #1A1A1A;
+    --ink-mid:     #4A4A4A;
+    --ink-soft:    #7A7A7A;
+    --radius:      10px;
+    --radius-lg:   16px;
+    --radius-xl:   24px;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'Montserrat', sans-serif; background: var(--stone); color: var(--ink); line-height: 1.6; -webkit-font-smoothing: antialiased; }
+  a { color: inherit; text-decoration: none; }
+  img { display: block; max-width: 100%; }
+  .container { max-width: 720px; margin: 0 auto; padding: 0 24px; }
+
+  nav { position: sticky; top: 0; z-index: 100; background: rgba(244,245,242,0.97); backdrop-filter: blur(8px); border-bottom: 1px solid var(--border); }
+  .nav-inner { display: flex; align-items: center; justify-content: space-between; height: 66px; max-width: 720px; margin: 0 auto; padding: 0 24px; }
+  .nav-logo img { height: 34px; width: auto; }
+  .nav-phone { font-size: 13px; font-weight: 600; color: var(--ink-mid); }
+  .nav-phone a:hover { color: var(--forest); }
+
+  .brief-hero { padding: 56px 0 32px; text-align: left; }
+  .brief-logo { height: 84px; width: auto; margin-bottom: 24px; }
+  .hero-eyebrow { display: inline-block; font-size: 11px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--forest); margin-bottom: 14px; }
+  .brief-hero h1 { font-size: clamp(30px, 4vw, 42px); font-weight: 900; color: var(--forest); letter-spacing: -0.5px; margin-bottom: 16px; }
+  .brief-hero p { font-size: 16px; color: var(--ink-mid); max-width: 560px; margin-bottom: 20px; }
+  .hero-promise { display: flex; flex-wrap: wrap; gap: 10px 20px; margin-bottom: 8px; }
+  .promise-item { display: flex; align-items: center; gap: 7px; font-size: 12.5px; font-weight: 600; color: var(--forest); }
+  .promise-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--sunrise); flex-shrink: 0; }
+
+  form { padding-bottom: 80px; }
+  .form-card { background: white; border: 1px solid var(--border); border-radius: var(--radius-xl); padding: 36px; margin-top: 8px; }
+  .form-section { margin-bottom: 32px; }
+  .form-section:last-child { margin-bottom: 0; }
+  .section-label { font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--eucalyptus); margin-bottom: 6px; }
+  .section-title { font-size: 19px; font-weight: 800; color: var(--forest); margin-bottom: 20px; }
+  .field-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 16px; }
+  .field { margin-bottom: 16px; }
+  .field:last-child { margin-bottom: 0; }
+  .field label { display: block; font-size: 13px; font-weight: 600; color: var(--ink); margin-bottom: 6px; }
+  .req { color: var(--sunrise); margin-left: 3px; }
+  .opt { font-size: 11.5px; font-weight: 500; color: var(--ink-soft); text-transform: none; letter-spacing: 0; margin-left: 5px; }
+  input[type="text"], input[type="tel"], input[type="email"], input[type="date"], input[type="url"], select {
+    width: 100%; font-family: inherit; font-size: 14.5px; color: var(--ink);
+    padding: 12px 14px; border: 1.5px solid var(--border); border-radius: var(--radius); background: white; transition: border-color 0.15s;
+  }
+  input:focus, select:focus { outline: none; border-color: var(--forest); }
+
+  .pill-group { display: flex; flex-wrap: wrap; gap: 8px; }
+  .pill { padding: 9px 16px; border: 1.5px solid var(--border); border-radius: 30px; font-size: 13px; font-weight: 600; color: var(--ink-mid); cursor: pointer; transition: all 0.15s; background: white; user-select: none; }
+  .pill:hover { border-color: var(--forest); }
+  .pill.active { background: var(--forest); border-color: var(--forest); color: white; }
+
+  .property-block { border: 1.5px dashed var(--border); border-radius: var(--radius-lg); padding: 20px; margin-bottom: 16px; }
+  .property-block-title { font-size: 13px; font-weight: 700; color: var(--forest); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 14px; }
+
+  .many-properties-msg {
+    background: var(--sunrise-lt); border: 1px solid var(--sunrise); border-radius: var(--radius-lg);
+    padding: 20px; font-size: 14px; color: var(--forest); line-height: 1.6; display: none;
+  }
+  .many-properties-msg a { font-weight: 700; color: var(--sunrise); }
+  .many-properties-msg.visible { display: block; }
+
+  .submit-btn { width: 100%; background: var(--sunrise); color: white; font-family: inherit; font-size: 14px; font-weight: 700; letter-spacing: 0.03em; text-transform: uppercase; padding: 16px; border: none; border-radius: var(--radius); cursor: pointer; margin-top: 28px; transition: opacity 0.15s; }
+  .submit-btn:hover { opacity: 0.92; }
+  .submit-btn:disabled { opacity: 0.6; cursor: not-allowed; }
+  .assurance { text-align: center; font-size: 12.5px; color: var(--ink-soft); margin-top: 14px; line-height: 1.5; }
+
+  .success-screen { display: none; text-align: center; padding: 80px 0; }
+  .success-screen.visible { display: block; }
+  .success-icon { width: 56px; height: 56px; border-radius: 50%; background: var(--sunrise-lt); display: flex; align-items: center; justify-content: center; margin: 0 auto 20px; }
+  .success-title { font-size: 24px; font-weight: 800; color: var(--forest); margin-bottom: 10px; }
+  .success-body { font-size: 15px; color: var(--ink-mid); max-width: 420px; margin: 0 auto; }
+
+  footer { background: var(--forest-dark); padding: 32px 0; }
+  .footer-inner { text-align: center; }
+  .footer-inner p { color: rgba(255,255,255,0.5); font-size: 12.5px; margin-bottom: 4px; }
+  .footer-inner a { color: rgba(255,255,255,0.7); }
+  .footer-inner a:hover { color: var(--sunrise); }
+
+  @media (max-width: 600px) {
+    .field-row { grid-template-columns: 1fr; gap: 0; }
+    .form-card { padding: 24px; }
+    .nav-phone { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a href="/" class="nav-logo"><img src="images/canop_logo.png" alt="cano.p" /></a>
+    <div class="nav-phone">Questions? <a href="tel:+61473777017">0473 777 017</a></div>
+  </div>
+</nav>
+
+<div class="container">
+
+  <div class="brief-hero">
+    <img src="images/canop_logo.png" alt="cano.p" class="brief-logo" />
+    <span class="hero-eyebrow">For property hosts</span>
+    <h1>Register your property.</h1>
+    <p>Join Sydney's dedicated temporary housing host network. Longer stays, reliable payment, no lock-in — your listing, your terms.</p>
+    <div class="hero-promise">
+      <div class="promise-item"><div class="promise-dot"></div>Longer stays</div>
+      <div class="promise-item"><div class="promise-dot"></div>Reliable, insurer-backed payment</div>
+      <div class="promise-item"><div class="promise-dot"></div>Less guest turnover</div>
+      <div class="promise-item"><div class="promise-dot"></div>Fee only on confirmed bookings</div>
+    </div>
+  </div>
+
+  <form id="hostForm" action="https://formspree.io/f/mzdlyjdl" method="POST">
+
+    <input type="hidden" name="property_count" id="count-val" />
+
+    <div class="form-card">
+
+      <!-- Section 1 -->
+      <div class="form-section">
+        <div class="section-label">Section 1 of 2</div>
+        <div class="section-title">Your details</div>
+
+        <div class="field-row">
+          <div class="field">
+            <label for="full-name">Full name<span class="req">*</span></label>
+            <input type="text" id="full-name" name="full_name" placeholder="Jane Smith" required />
+          </div>
+          <div class="field">
+            <label for="host-phone">Phone<span class="req">*</span></label>
+            <input type="tel" id="host-phone" name="phone" placeholder="0400 000 000" required />
+          </div>
+        </div>
+
+        <div class="field">
+          <label for="host-email">Email<span class="req">*</span></label>
+          <input type="email" id="host-email" name="email" placeholder="jane@email.com" required />
+        </div>
+      </div>
+
+      <!-- Section 2 -->
+      <div class="form-section">
+        <div class="section-label">Section 2 of 2</div>
+        <div class="section-title">Your portfolio</div>
+
+        <div class="field">
+          <label>How many properties do you have?<span class="req">*</span></label>
+          <div class="pill-group" id="count">
+            <div class="pill" onclick="selectCount(this,'1')">1</div>
+            <div class="pill" onclick="selectCount(this,'2')">2</div>
+            <div class="pill" onclick="selectCount(this,'3')">3</div>
+            <div class="pill" onclick="selectCount(this,'4')">4</div>
+            <div class="pill" onclick="selectCount(this,'5+')">5+</div>
+          </div>
+        </div>
+
+        <div id="propertyFields" style="margin-top:20px;"></div>
+
+        <div class="many-properties-msg" id="manyMsg">
+          You have a large portfolio — we'd love to onboard you personally.
+          Email us at <a href="mailto:hello@canop.com.au">hello@canop.com.au</a> and we'll be in touch within 24 hours.
+        </div>
+      </div>
+
+      <button type="submit" class="submit-btn" id="submitBtn">Register My Properties</button>
+      <div class="assurance">No upfront cost. No lock-in. We review every submission before it joins the network.</div>
+    </div>
+  </form>
+
+  <div class="success-screen" id="successScreen">
+    <div class="success-icon">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M5 13l4 4L19 7" stroke="#E8821A" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </div>
+    <h2 class="success-title">You're registered.</h2>
+    <p class="success-body">Thanks for joining the network. We review every property before it goes live — you'll hear from us within 48 hours.</p>
+  </div>
+
+</div>
+
+<footer>
+  <div class="container footer-inner">
+    <p>cano.p — Sydney temporary housing coordination</p>
+    <p><a href="tel:+61473777017">0473 777 017</a> · <a href="mailto:hello@canop.com.au">hello@canop.com.au</a></p>
+  </div>
+</footer>
+
+<script>
+  const rateOptions = [
+    'Under A$800/week', 'A$800 – A$1,200/week', 'A$1,200 – A$1,800/week',
+    'A$1,800 – A$2,500/week', 'A$2,500 – A$3,500/week', 'A$3,500+/week', 'Negotiable — contact me'
+  ];
+
+  function buildPropertyBlock(index) {
+    const rateOptionsHtml = rateOptions.map(r => `<option>${r}</option>`).join('');
+    return `
+      <div class="property-block">
+        <div class="property-block-title">Property ${index}</div>
+        <div class="field">
+          <label for="url-${index}">Listing URL (Airbnb, Stayz or Booking.com)<span class="req">*</span></label>
+          <input type="url" id="url-${index}" name="property_${index}_url" placeholder="https://airbnb.com.au/rooms/..." required />
+        </div>
+        <div class="field-row">
+          <div class="field">
+            <label for="rate-${index}">Weekly rate range<span class="req">*</span></label>
+            <select id="rate-${index}" name="property_${index}_rate" required>
+              <option value="">Select one...</option>
+              ${rateOptionsHtml}
+            </select>
+          </div>
+          <div class="field">
+            <label for="avail-${index}">Available from<span class="req">*</span></label>
+            <input type="date" id="avail-${index}" name="property_${index}_available" required />
+          </div>
+        </div>
+      </div>
+    `;
+  }
+
+  function selectCount(el, count) {
+    document.querySelectorAll('#count .pill').forEach(p => p.classList.remove('active'));
+    el.classList.add('active');
+    document.getElementById('count-val').value = count;
+
+    const container = document.getElementById('propertyFields');
+    const manyMsg = document.getElementById('manyMsg');
+
+    if (count === '5+') {
+      container.innerHTML = '';
+      manyMsg.classList.add('visible');
+    } else {
+      manyMsg.classList.remove('visible');
+      const n = parseInt(count, 10);
+      let html = '';
+      for (let i = 1; i <= n; i++) html += buildPropertyBlock(i);
+      container.innerHTML = html;
+    }
+  }
+
+  const form = document.getElementById('hostForm');
+  const successScreen = document.getElementById('successScreen');
+  const submitBtn = document.getElementById('submitBtn');
+
+  form.addEventListener('submit', async function (e) {
+    e.preventDefault();
+
+    const count = document.getElementById('count-val').value;
+    if (!count) { alert('Please select how many properties you have.'); return; }
+
+    if (count === '5+') {
+      // Nothing to submit — they're directed to email.
+      return;
+    }
+
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Submitting...';
+
+    try {
+      const data = new FormData(form);
+      const response = await fetch(form.action, { method: 'POST', body: data, headers: { 'Accept': 'application/json' } });
+      if (response.ok) {
+        form.style.display = 'none';
+        successScreen.classList.add('visible');
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      } else {
+        submitBtn.disabled = false;
+        submitBtn.textContent = 'Register My Properties';
+        alert('Something went wrong. Please call us directly on 0473 777 017.');
+      }
+    } catch (err) {
+      submitBtn.disabled = false;
+      submitBtn.textContent = 'Register My Properties';
+      alert('Something went wrong. Please call us directly on 0473 777 017.');
+    }
+  });
+</script>
+
+</body>
+</html>

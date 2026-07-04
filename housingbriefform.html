@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Submit a housing brief — cano.p</title>
+<meta name="description" content="Submit a housing brief for a displaced policyholder. Cano.p matches vetted Sydney hosts to insurer-referred families. No claim details required." />
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --forest:      #1A3A2A;
+    --forest-dark: #0D2018;
+    --eucalyptus:  #7FA99B;
+    --sunrise:     #E8821A;
+    --sunrise-lt:  #FDF0E4;
+    --stone:       #F4F5F2;
+    --border:      #E2E0DA;
+    --ink:         #1A1A1A;
+    --ink-mid:     #4A4A4A;
+    --ink-soft:    #7A7A7A;
+    --radius:      10px;
+    --radius-lg:   16px;
+    --radius-xl:   24px;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'Montserrat', sans-serif;
+    background: var(--stone);
+    color: var(--ink);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+  a { color: inherit; text-decoration: none; }
+  img { display: block; max-width: 100%; }
+  .container { max-width: 720px; margin: 0 auto; padding: 0 24px; }
+
+  /* ── Nav ── */
+  nav {
+    position: sticky; top: 0; z-index: 100;
+    background: rgba(244,245,242,0.97);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--border);
+  }
+  .nav-inner { display: flex; align-items: center; justify-content: space-between; height: 66px; max-width: 720px; margin: 0 auto; padding: 0 24px; }
+  .nav-logo img { height: 34px; width: auto; }
+  .nav-phone { font-size: 13px; font-weight: 600; color: var(--ink-mid); }
+  .nav-phone a:hover { color: var(--forest); }
+
+  /* ── Hero ── */
+  .brief-hero { padding: 56px 0 32px; text-align: left; }
+  .brief-logo { height: 84px; width: auto; margin-bottom: 24px; }
+  .hero-eyebrow {
+    display: inline-block; font-size: 11px; font-weight: 700; letter-spacing: 0.12em;
+    text-transform: uppercase; color: var(--forest); margin-bottom: 14px;
+  }
+  .brief-hero h1 { font-size: clamp(30px, 4vw, 42px); font-weight: 900; color: var(--forest); letter-spacing: -0.5px; margin-bottom: 16px; }
+  .brief-hero p { font-size: 16px; color: var(--ink-mid); max-width: 560px; margin-bottom: 20px; }
+  .hero-promise { display: flex; flex-wrap: wrap; gap: 10px 20px; margin-bottom: 8px; }
+  .promise-item { display: flex; align-items: center; gap: 7px; font-size: 12.5px; font-weight: 600; color: var(--forest); }
+  .promise-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--sunrise); flex-shrink: 0; }
+
+  /* ── Form ── */
+  form { padding-bottom: 80px; }
+  .form-card {
+    background: white; border: 1px solid var(--border); border-radius: var(--radius-xl);
+    padding: 36px; margin-top: 8px;
+  }
+  .form-section { margin-bottom: 32px; }
+  .form-section:last-child { margin-bottom: 0; }
+  .section-label { font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--eucalyptus); margin-bottom: 6px; }
+  .section-title { font-size: 19px; font-weight: 800; color: var(--forest); margin-bottom: 20px; }
+  .field-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 16px; }
+  .field { margin-bottom: 16px; }
+  .field:last-child { margin-bottom: 0; }
+  .field label { display: block; font-size: 13px; font-weight: 600; color: var(--ink); margin-bottom: 6px; }
+  .req { color: var(--sunrise); margin-left: 3px; }
+  .opt { font-size: 11.5px; font-weight: 500; color: var(--ink-soft); text-transform: none; letter-spacing: 0; margin-left: 5px; }
+  .hint { font-size: 12px; color: var(--ink-soft); margin-top: 4px; }
+  input[type="text"], input[type="tel"], input[type="email"], input[type="number"], input[type="date"], select, textarea {
+    width: 100%; font-family: inherit; font-size: 14.5px; color: var(--ink);
+    padding: 12px 14px; border: 1.5px solid var(--border); border-radius: var(--radius);
+    background: white; transition: border-color 0.15s;
+  }
+  input:focus, select:focus, textarea:focus { outline: none; border-color: var(--forest); }
+  textarea { resize: vertical; min-height: 80px; }
+
+  .pill-group { display: flex; flex-wrap: wrap; gap: 8px; }
+  .pill {
+    padding: 9px 16px; border: 1.5px solid var(--border); border-radius: 30px;
+    font-size: 13px; font-weight: 600; color: var(--ink-mid); cursor: pointer;
+    transition: all 0.15s; background: white; user-select: none;
+  }
+  .pill:hover { border-color: var(--forest); }
+  .pill.active { background: var(--forest); border-color: var(--forest); color: white; }
+
+  .submit-btn {
+    width: 100%; background: var(--sunrise); color: white; font-family: inherit;
+    font-size: 14px; font-weight: 700; letter-spacing: 0.03em; text-transform: uppercase;
+    padding: 16px; border: none; border-radius: var(--radius); cursor: pointer;
+    margin-top: 28px; transition: opacity 0.15s;
+  }
+  .submit-btn:hover { opacity: 0.92; }
+  .submit-btn:disabled { opacity: 0.6; cursor: not-allowed; }
+  .assurance { text-align: center; font-size: 12.5px; color: var(--ink-soft); margin-top: 14px; line-height: 1.5; }
+
+  /* ── Success screen ── */
+  .success-screen { display: none; text-align: center; padding: 80px 0; }
+  .success-screen.visible { display: block; }
+  .success-icon {
+    width: 56px; height: 56px; border-radius: 50%; background: var(--sunrise-lt);
+    display: flex; align-items: center; justify-content: center; margin: 0 auto 20px;
+  }
+  .success-title { font-size: 24px; font-weight: 800; color: var(--forest); margin-bottom: 10px; }
+  .success-body { font-size: 15px; color: var(--ink-mid); max-width: 420px; margin: 0 auto; }
+
+  footer { background: var(--forest-dark); padding: 32px 0; }
+  .footer-inner { text-align: center; }
+  .footer-inner p { color: rgba(255,255,255,0.5); font-size: 12.5px; margin-bottom: 4px; }
+  .footer-inner a { color: rgba(255,255,255,0.7); }
+  .footer-inner a:hover { color: var(--sunrise); }
+
+  @media (max-width: 600px) {
+    .field-row { grid-template-columns: 1fr; gap: 0; }
+    .form-card { padding: 24px; }
+    .nav-phone { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a href="/" class="nav-logo"><img src="images/canop_logo.png" alt="cano.p" /></a>
+    <div class="nav-phone">Questions? <a href="tel:+61473777017">0473 777 017</a></div>
+  </div>
+</nav>
+
+<div class="container">
+
+  <div class="brief-hero">
+    <img src="images/canop_logo.png" alt="cano.p" class="brief-logo" />
+    <span class="hero-eyebrow">For adjusters &amp; insurers</span>
+    <h1>Submit a housing brief.</h1>
+    <p>Tell us what your policyholder needs. We match them with a vetted Sydney host and come back with options — no claim details required, full confidentiality.</p>
+    <div class="hero-promise">
+      <div class="promise-item"><div class="promise-dot"></div>Free to adjusters</div>
+      <div class="promise-item"><div class="promise-dot"></div>Same business day response</div>
+      <div class="promise-item"><div class="promise-dot"></div>No claim details required</div>
+      <div class="promise-item"><div class="promise-dot"></div>Like-for-like standard</div>
+    </div>
+  </div>
+
+  <form id="briefForm" action="https://formspree.io/f/meebvrey" method="POST">
+
+    <input type="hidden" name="bedrooms" id="bedrooms-val" />
+    <input type="hidden" name="urgency" id="urgency-val" />
+    <input type="hidden" name="duration" id="duration-val" />
+    <input type="hidden" name="special_requirements" id="special-val" />
+
+    <div class="form-card">
+
+      <!-- Section 1 -->
+      <div class="form-section">
+        <div class="section-label">Section 1 of 3</div>
+        <div class="section-title">Your details</div>
+
+        <div class="field-row">
+          <div class="field">
+            <label for="adjuster-name">Your name<span class="req">*</span></label>
+            <input type="text" id="adjuster-name" name="adjuster_name" placeholder="Sarah Chen" required />
+          </div>
+          <div class="field">
+            <label for="insurer">Insurer or firm<span class="req">*</span></label>
+            <input type="text" id="insurer" name="insurer" placeholder="Suncorp, Crawford & Co..." required />
+          </div>
+        </div>
+
+        <div class="field-row">
+          <div class="field">
+            <label for="phone">Direct phone<span class="req">*</span></label>
+            <input type="tel" id="phone" name="phone" placeholder="0400 000 000" required />
+          </div>
+          <div class="field">
+            <label for="email">Work email<span class="req">*</span></label>
+            <input type="email" id="email" name="email" placeholder="sarah@insurer.com.au" required />
+          </div>
+        </div>
+
+        <div class="field">
+          <label for="role">Your role<span class="opt">optional</span></label>
+          <select id="role" name="role">
+            <option value="">Select one...</option>
+            <option>Loss adjuster</option>
+            <option>Claims consultant</option>
+            <option>Case manager</option>
+            <option>Broker</option>
+            <option>Other</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- Section 2 -->
+      <div class="form-section">
+        <div class="section-label">Section 2 of 3</div>
+        <div class="section-title">Placement needs</div>
+
+        <div class="field-row">
+          <div class="field">
+            <label for="suburb">Suburb<span class="req">*</span></label>
+            <input type="text" id="suburb" name="suburb" placeholder="e.g. Parramatta" required />
+          </div>
+          <div class="field">
+            <label for="adults">Adults<span class="req">*</span></label>
+            <input type="number" id="adults" name="adults" min="1" placeholder="2" required />
+          </div>
+        </div>
+
+        <div class="field-row">
+          <div class="field">
+            <label for="children">Children<span class="opt">optional</span></label>
+            <input type="number" id="children" name="children" min="0" placeholder="0" />
+          </div>
+          <div class="field">
+            <label for="pets_count">Pets<span class="opt">optional</span></label>
+            <input type="text" id="pets_count" name="pets" placeholder="e.g. 1 dog" />
+          </div>
+        </div>
+
+        <div class="field">
+          <label>Bedrooms needed<span class="req">*</span></label>
+          <div class="pill-group" id="bedrooms">
+            <div class="pill" onclick="selectPill(this,'bedrooms','bedrooms-val')">Studio</div>
+            <div class="pill" onclick="selectPill(this,'bedrooms','bedrooms-val')">1</div>
+            <div class="pill" onclick="selectPill(this,'bedrooms','bedrooms-val')">2</div>
+            <div class="pill" onclick="selectPill(this,'bedrooms','bedrooms-val')">3</div>
+            <div class="pill" onclick="selectPill(this,'bedrooms','bedrooms-val')">4+</div>
+          </div>
+        </div>
+
+        <div class="field">
+          <label>Move-in urgency<span class="req">*</span></label>
+          <div class="pill-group" id="urgency">
+            <div class="pill" onclick="selectPill(this,'urgency','urgency-val')">ASAP</div>
+            <div class="pill" onclick="selectPill(this,'urgency','urgency-val')">Within 48hrs</div>
+            <div class="pill" onclick="selectPill(this,'urgency','urgency-val')">Within a week</div>
+            <div class="pill" onclick="selectPill(this,'urgency','urgency-val')">Flexible</div>
+          </div>
+        </div>
+
+        <div class="field">
+          <label>Estimated duration<span class="req">*</span></label>
+          <div class="pill-group" id="duration">
+            <div class="pill" onclick="selectPill(this,'duration','duration-val')">Under 2 weeks</div>
+            <div class="pill" onclick="selectPill(this,'duration','duration-val')">2–4 weeks</div>
+            <div class="pill" onclick="selectPill(this,'duration','duration-val')">1–3 months</div>
+            <div class="pill" onclick="selectPill(this,'duration','duration-val')">3+ months</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Section 3 -->
+      <div class="form-section">
+        <div class="section-label">Section 3 of 3</div>
+        <div class="section-title">Special requirements</div>
+
+        <div class="field">
+          <label class="opt" style="display:block;margin-bottom:8px;">Select all that apply</label>
+          <div class="pill-group" id="special">
+            <div class="pill" onclick="togglePill(this,'special','special-val')">Pet friendly</div>
+            <div class="pill" onclick="togglePill(this,'special','special-val')">Off-street parking</div>
+            <div class="pill" onclick="togglePill(this,'special','special-val')">Disability access</div>
+            <div class="pill" onclick="togglePill(this,'special','special-val')">School catchment</div>
+            <div class="pill" onclick="togglePill(this,'special','special-val')">Fenced yard</div>
+            <div class="pill" onclick="togglePill(this,'special','special-val')">Ground floor</div>
+            <div class="pill" onclick="togglePill(this,'special','special-val')">Laundry in property</div>
+          </div>
+        </div>
+
+        <div class="field" style="margin-top:16px">
+          <label for="budget">Weekly accommodation budget<span class="opt">optional</span></label>
+          <div class="hint" style="margin-top:-2px;margin-bottom:8px;">Helps us match within your ALE limit</div>
+          <select id="budget" name="weekly_budget">
+            <option value="">No preference / not specified</option>
+            <option>Up to A$800/week</option>
+            <option>Up to A$1,200/week</option>
+            <option>Up to A$1,800/week</option>
+            <option>Up to A$2,500/week</option>
+            <option>Above A$2,500/week</option>
+          </select>
+        </div>
+
+        <div class="field">
+          <label for="notes">Anything else we should know<span class="opt">optional</span></label>
+          <textarea id="notes" name="notes" placeholder="e.g. family has a large dog, needs to stay near Westmead Hospital, school term starts Monday..."></textarea>
+        </div>
+      </div>
+
+      <button type="submit" class="submit-btn" id="submitBtn">Submit housing brief</button>
+      <div class="assurance">We'll be in touch the same business day with vetted options. All enquiries handled with full confidentiality. No claim details required.</div>
+    </div>
+  </form>
+
+  <div class="success-screen" id="successScreen">
+    <div class="success-icon">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M5 13l4 4L19 7" stroke="#E8821A" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </div>
+    <h2 class="success-title">Housing brief received.</h2>
+    <p class="success-body">We're on it. You'll hear from us the same business day with vetted options — complete with weekly rates, property details, and everything you need to move forward.</p>
+  </div>
+
+</div>
+
+<footer>
+  <div class="container footer-inner">
+    <p>cano.p — Sydney temporary housing coordination</p>
+    <p><a href="tel:+61473777017">0473 777 017</a> · <a href="mailto:hello@canop.com.au">hello@canop.com.au</a></p>
+  </div>
+</footer>
+
+<script>
+  function selectPill(el, groupId, hiddenId) {
+    document.querySelectorAll('#' + groupId + ' .pill').forEach(p => p.classList.remove('active'));
+    el.classList.add('active');
+    document.getElementById(hiddenId).value = el.textContent.trim();
+  }
+  function togglePill(el, groupId, hiddenId) {
+    el.classList.toggle('active');
+    const active = [...document.querySelectorAll('#' + groupId + ' .pill.active')].map(p => p.textContent.trim());
+    document.getElementById(hiddenId).value = active.join(', ');
+  }
+
+  const form = document.getElementById('briefForm');
+  const successScreen = document.getElementById('successScreen');
+  const submitBtn = document.getElementById('submitBtn');
+
+  form.addEventListener('submit', async function (e) {
+    e.preventDefault();
+
+    if (!document.getElementById('bedrooms-val').value) { alert('Please select the number of bedrooms required.'); return; }
+    if (!document.getElementById('urgency-val').value) { alert('Please select the move-in urgency.'); return; }
+    if (!document.getElementById('duration-val').value) { alert('Please select the estimated duration.'); return; }
+
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Submitting...';
+
+    try {
+      const data = new FormData(form);
+      const response = await fetch(form.action, { method: 'POST', body: data, headers: { 'Accept': 'application/json' } });
+      if (response.ok) {
+        form.style.display = 'none';
+        successScreen.classList.add('visible');
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      } else {
+        submitBtn.disabled = false;
+        submitBtn.textContent = 'Submit housing brief';
+        alert('Something went wrong. Please call us directly on 0473 777 017.');
+      }
+    } catch (err) {
+      submitBtn.disabled = false;
+      submitBtn.textContent = 'Submit housing brief';
+      alert('Something went wrong. Please call us directly on 0473 777 017.');
+    }
+  });
+</script>
+
+</body>
+</html>
